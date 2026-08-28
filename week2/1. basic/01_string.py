@@ -44,6 +44,21 @@ def is_palindrome(s):
     pass
     
     #return False
+    
+    alnum = ""
+    for ss in s:
+        if ss.isalnum():
+            alnum += ss
+        else:
+            continue
+    alnum = alnum.lower()
+    
+    rvalnum = alnum[::-1]
+    if alnum == rvalnum:
+        return True
+    else:
+        return False
+    
 
 # 테스트 케이스
 if __name__ == "__main__":
