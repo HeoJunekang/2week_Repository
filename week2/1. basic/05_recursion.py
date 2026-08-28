@@ -39,6 +39,12 @@ def factorial(n):
     # TODO: recursive case를 작성하세요
     pass
 
+    if n == 0:
+        return 1
+    else:    
+        return n*factorial(n-1)
+            
+    
 def fibonacci(n):
     """
     재귀를 사용한 피보나치 수 계산
@@ -56,6 +62,14 @@ def fibonacci(n):
     # TODO: recursive case를 작성하세요
     pass
 
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1)+fibonacci(n-2)
+    
+   
 # 테스트 케이스
 if __name__ == "__main__":
     # 팩토리얼 테스트
