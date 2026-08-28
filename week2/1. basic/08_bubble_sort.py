@@ -42,7 +42,17 @@ def bubble_sort(arr):
     ## arr[j] > arr[j+1]이면 교환
     ## 외부 반복문: n-1번 실행
     pass
-        
+
+    
+    for i in range(n-1):
+        for j in range(0,n-1-i):
+            if arr[j]>arr[j+1]:
+                num = arr[j+1]
+                arr[j+1] = arr[j]
+                arr[j] = num
+            else:
+                continue 
+                
     return arr
 
 def bubble_sort_optimized(arr):
