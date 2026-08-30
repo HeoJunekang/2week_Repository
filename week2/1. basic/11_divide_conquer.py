@@ -17,6 +17,11 @@
 입력: [3, 5, 1, 8, 2, 9, 4]
 출력: 9
 
+힌트:
+- Base case: left == right일 때 arr[left] 반환
+- 배열을 반으로 나누어 재귀 호출
+- 왼쪽과 오른쪽의 최댓값 중 큰 값 반환
+
 
 """
 [1,3,4,5]
@@ -31,6 +36,21 @@ def find_max_divide_conquer(arr, left, right):
     
     Returns:
         최댓값
+        
+    # TODO: base case - 원소가 하나면 그 값 반환
+    pass
+    
+    # TODO: 중간 지점 계산
+    pass
+    
+    # TODO: 왼쪽 절반의 최댓값
+    pass
+        
+    # TODO: 오른쪽 절반의 최댓값
+    pass
+    
+    # TODO: 둘 중 큰 값 반환
+    pass
     """
     
     mid = (left +right)//2
@@ -44,12 +64,6 @@ def find_max_divide_conquer(arr, left, right):
         else: 
             return ar2
         
-        
-        
-        
-    
-    
-
 # 테스트 케이스
 if __name__ == "__main__":
     # 테스트 케이스 1

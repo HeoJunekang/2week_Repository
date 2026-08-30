@@ -18,12 +18,15 @@
 
 입력: "(()"
 출력: False
-
 힌트:
 - 여는 괄호 '('는 스택에 push
 - 닫는 괄호 ')'를 만나면 스택에서 pop
 - 마지막에 스택이 비어있으면 True
+
+
 """
+
+
 
 def is_valid_parentheses(s):
     """
@@ -45,6 +48,63 @@ def is_valid_parentheses(s):
     pass
     
     # TODO: 반복이 끝나면 스택이 비어있는지 확인
+    pass
+
+    
+    for ch in s:
+        if ch == "(":
+            stack.append(ch)
+        else:
+            if len(stack) ==0:
+                return False
+            else:
+                stack.pop()
+    
+    if len(stack) ==0:
+        return True
+    else:
+        return False
+        
+    
+    
+    
+    
+    
+    # status = "close"
+    # count = 0
+    
+    # for ch in s:
+    #     stack.append(ch)
+    
+    # for i in s:
+    #     if stack.pop() == ")":
+    #         if status == "open":
+    #             count += 1
+    #         else:
+    #             if count != 0:
+    #                 return False
+    #             else:
+    #                 count += 1
+    #                 status = "open"
+    #     else:
+    #         if status == "open":
+    #             count -= 1
+    #             status = "close"
+    #         else:
+    #             if count <= 0:
+    #                 return False
+    #             else:
+    #                 count -= 1
+    #                 status = "close"
+    # if count == 0:
+    #     return True
+    # else:
+    #     return False
+         
+                
+            
+    
+
     pass
 
 # 테스트 케이스

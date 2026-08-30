@@ -22,6 +22,8 @@
 - 파이썬에서는 리스트로 큐 구현 가능
 - append(): 뒤에 추가 (enqueue)
 - pop(0): 앞에서 제거 (dequeue)
+
+
 """
 
 from collections import deque
@@ -40,10 +42,18 @@ def process_print_queue(jobs):
     queue = deque(jobs)
     
     processed = []
+    while len(queue) != 0:
+        job = queue.popleft()
+        processed.append(job)
+        print("처리: "+ job)
+        
     
     # TODO: 큐가 비어있지 않은 동안 반복
     ## 큐에서 작업 꺼내기
     ## 작업 처리 (출력 및 리스트에 추가)
+    pass
+    
+  
     pass
     
     return processed

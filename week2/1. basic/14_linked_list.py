@@ -128,6 +128,18 @@ class LinkedList:
               head ─▶ [1|●]─▶[2|●]─▶[7|None]
         """
         new_node = Node(data)
+        
+        if self.head == None:
+            self.head = new_node
+        else:
+            last_node = self.head
+            while last_node.next != None:
+                last_node = last_node.next
+            
+            last_node.next = new_node
+            
+            
+        
 
         # ─── Level 1: 리스트가 비어 있는 경우 ────────────────────────
         # 힌트: self.head 가 None 이면, head 에 new_node 를 바로 꽂고 return.
@@ -158,6 +170,12 @@ class LinkedList:
         예: head ─▶ [10|●]─▶[20|●]─▶[30|None]  →  [10, 20, 30]
         """
         values = []
+        node = self.head
+        while node != None:
+            values.append(node.data)
+            node = node.next
+            
+        return values
 
         # ─── Level 1: 시작 위치 ─────────────────────────────────────
         # current 라는 "이동용 변수" 를 head 에서 시작시킵니다.

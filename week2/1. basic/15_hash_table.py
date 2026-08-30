@@ -29,11 +29,14 @@
 - 평균: sum(scores.values()) / len(scores)
 - 최고점: max(scores, key=scores.get)
 """
+# a = "sssfdasdf"
+# arr = [] # m크기
+# hash(a)= > "8120730@!#!23213708128093" % m 
 
 def manage_grades(students):
     """
     학생 성적 관리 시스템
-    
+
     Args:
         students: {이름: 점수} 딕셔너리
     
@@ -46,6 +49,11 @@ def manage_grades(students):
     
     # TODO: 최고 점수 학생 찾기
     pass
+
+
+    average = sum(students.values())/len(students)
+    top_student  = max(students, key = students.get)
+    top_score = students[top_student]
     
     return average, top_student, top_score
 
@@ -62,6 +70,11 @@ def find_student_score(students, name):
     """
     # TODO: students에서 name 찾기
     pass
+
+    if name in students.keys():
+        return students[name]
+    else:
+        return None
 
 # 테스트 케이스
 if __name__ == "__main__":
