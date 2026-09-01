@@ -16,10 +16,7 @@
 입력: [10, 7, 8, 9, 1, 5]
 출력: [1, 5, 7, 8, 9, 10]
 
-힌트:
-- 피벗 선택 (일반적으로 마지막 원소)
-- 피벗보다 작은 원소는 왼쪽, 큰 원소는 오른쪽으로 분할
-- 재귀적으로 왼쪽과 오른쪽 부분 정렬
+
 """
 
 def partition(arr, low, high):
@@ -34,22 +31,55 @@ def partition(arr, low, high):
     Returns:
         피벗의 최종 위치 인덱스
     """
-    # TODO: 피벗을 선택 (일반적으로 마지막 원소)
-    pass
-    
-    # TODO: i는 작은 원소들의 마지막 인덱스를 추적
-    pass
-    
-    # TODO: low부터 high-1까지 순회하면서
-    ## 현재 원소가 피벗보다 작거나 같으면:
-    ##   1. i를 1 증가
-    ##   2. arr[i]와 arr[j]를 교환
-    pass
-    
-    # TODO: 피벗을 올바른 위치(i+1)에 배치
-    pass
-    
-    return i + 1
+    # pivot = low
+    # if low == high:
+    #     return pivot
+    # else:
+        # for i in range(low+1, high+1): 
+        #     if arr[pivot] >= arr[i]:
+        #         ar = arr[i]
+        #         for j in range(i, pivot, -1):
+        #             arr[j] = arr[j-1]
+        #         arr[pivot] = ar
+                                
+        #         pivot += 1
+        #     else:
+        #         continue
+        
+        #로모토 방식
+        # count = low
+        # for i in range(low+1,high+1):
+        #     if arr[pivot] >= arr[i]:
+        #         count += 1
+        #         arr[count], arr[i] = arr[i], arr[count]
+                
+        # arr[count], arr[pivot] = arr[pivot], arr[count]
+        
+        # pivot = count
+            
+        # return pivot
+        
+        
+        
+        #호어 방식
+    pivot = arr[low]
+    left = low
+    right = high
+
+    while True:
+        while arr[left] < pivot:
+            left +=1
+            
+        while pivot < arr[right]:
+            right -=1
+        
+        if left >= right:
+            return right
+        
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -=1
+            
 
 def quick_sort_helper(arr, low, high):
     """
@@ -60,11 +90,30 @@ def quick_sort_helper(arr, low, high):
         low: 시작 인덱스
         high: 끝 인덱스
     """
-    # TODO: base case - low가 high보다 작을 때만 정렬
-    ## 분할하여 피벗 인덱스 얻기
-    ## 피벗 왼쪽 부분 재귀 정렬
-    ## 피벗 오른쪽 부분 재귀 정렬
-    pass 
+    
+    # pivot = partition(arr, low, high)
+    # if pivot == low and pivot== high:
+    #     return 
+    # else:
+    #     if pivot != high and pivot != low:
+    #         quick_sort_helper(arr, low, pivot-1)
+    #         quick_sort_helper(arr, pivot+1, high)
+    #     elif pivot == low:
+    #         quick_sort_helper(arr, pivot+1, high)
+    #     else:
+    #         quick_sort_helper(arr, low, pivot-1)
+    
+   
+    if low >= high:
+        return 
+    else:
+        pivot = partition(arr, low, high)
+        # quick_sort_helper(arr, low, pivot-1)
+        # quick_sort_helper(arr, pivot+1, high)
+        quick_sort_helper(arr, low, pivot)
+        quick_sort_helper(arr, pivot+1, high)
+        
+    
     
 
 def quick_sort(arr):
@@ -77,7 +126,7 @@ def quick_sort(arr):
     Returns:
         정렬된 배열
     """
-    quick_sort_helper(arr, 0, len(arr) - 1)
+    quick_sort_helper(arr, 0, len(arr)-1)
     return arr
 
 # 테스트 케이스

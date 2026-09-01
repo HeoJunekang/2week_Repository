@@ -18,10 +18,7 @@
 처리: 박민수 (우선순위: 2)
 처리: 김철수 (우선순위: 3)
 
-힌트:
-- heapq 모듈 사용
-- heappush(): 힙에 추가
-- heappop(): 최소값 제거
+
 """
 
 import heapq
@@ -36,19 +33,25 @@ def process_emergency_room(patients):
     Returns:
         처리된 환자 순서
     """
-    # TODO: 빈 힙 생성
+
     heap = []
+    for i in range(len(patients)):
+        p = []
+        p.append(patients[i][1])
+        p.append(patients[i][0])
+        heapq.heappush(heap,p)
     
     
-    # TODO: 모든 환자를 힙에 추가
+
     pass
-        
     processed = []
-    
-    # TODO: 힙이 비어있지 않은 동안 반복
-    ## 힙에서 우선순위가 가장 높은 환자 꺼내기
-    ## 환자 처리
-    pass
+    for i in range(len(heap)):
+        patient = heapq.heappop(heap)
+        pri = patient[0]
+        name = patient[1]
+        print(f"처리: {name} (우선순위: {pri})")
+        processed.append(name)
+        
         
     return processed
 
@@ -75,5 +78,7 @@ if __name__ == "__main__":
     print("=== 응급실 환자 처리 ===")
     result2 = process_emergency_room(patients2)
     print(f"처리 순서: {result2}")
+
+
 
 
