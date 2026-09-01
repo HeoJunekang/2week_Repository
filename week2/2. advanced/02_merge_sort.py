@@ -20,6 +20,7 @@
 """
 
 def merge(arr, left, mid, right):
+    
     """
     두 개의 정렬된 부분 배열을 병합하는 함수
     
@@ -29,6 +30,7 @@ def merge(arr, left, mid, right):
         mid: 왼쪽 부분의 끝 인덱스
         right: 오른쪽 부분의 끝 인덱스
     """
+    
     # tmp = []
     # left_count = left
     # right_count = mid+1
@@ -72,7 +74,34 @@ def merge(arr, left, mid, right):
     #     arr[i] = tmp[n]
     #     n += 1         
    
-
+    right_count = mid+1
+    left_count = left
+    tmp = []
+    while True:
+        if right_count > right:
+            tmp.extend(arr[left_count:mid+1])
+            break
+        elif left_count > mid:
+            tmp.extend(arr[right_count:right+1])
+            break
+        else:
+            if arr[left_count] < arr[right_count]:
+                tmp.append(arr[left_count])
+                left_count += 1
+            elif arr[right_count] < arr[left_count]:
+                tmp.append(arr[right_count])
+                right_count += 1
+            else:
+                tmp.append(arr[left_count])
+                left_count += 1
+                tmp.append(arr[right_count])
+                right_count += 1
+    
+    for i in range(len(tmp)):
+        arr[left] = tmp[i]
+        left +=1
+            
+            
 def merge_sort_helper(arr, left, right):
     """
     머지 정렬 재귀 함수
