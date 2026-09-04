@@ -27,9 +27,7 @@
 중위: [4, 2, 5, 1, 3]
 후위: [4, 5, 2, 3, 1]
 
-힌트:
-- 재귀로 간단히 구현 가능
-- 순회 순서만 다름
+
 """
 
 class TreeNode:
@@ -39,59 +37,54 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def preorder(root):
+def preorder(root):  #트리가 왼쪽만 있거나 오른쪽만 있을때도 고려해서 짬
     """전위 순회: 루트 → 왼쪽 → 오른쪽"""
     result = []
+    result.append(root.value)
     
-    # TODO: root가 None이면 빈 리스트 반환
-    pass
     
-    # TODO: 루트 값 추가
-    pass
-    
-    # TODO: 왼쪽 서브트리 순회
-    pass
-    
-    # TODO: 오른쪽 서브트리 순회
-    pass
-    
-    return result
+    if root.left == None and root.right == None:
+        pass
+    else:
+        pre_result = preorder(root.left)
+        pre_result.extend(preorder(root.right))
+        result.extend(pre_result)
 
+    return result
+        
+
+result2 = []
 def inorder(root):
-    """중위 순회: 왼쪽 → 루트 → 오른쪽"""
-    result = []
+    """중위 순회: 왼쪽 → 루트 → 오른쪽""" 
     
-    # TODO: root가 None이면 빈 리스트 반환
-    pass
+    #루트를 내려 그리고 탐색
     
-    # TODO: 왼쪽 서브트리 순회
-    pass
-    
-    # TODO: 루트 값 추가
-    pass
-    
-    # TODO: 오른쪽 서브트리 순회
-    pass
-    
-    return result
+    if root == None:
+        return 
+    else:
+        inorder(root.left)
+        result2.append(root.value)
+        inorder(root.right)
+        
+        
+        
+    return result2
 
+
+result3 = []
 def postorder(root):
     """후위 순회: 왼쪽 → 오른쪽 → 루트"""
-    result = []
     
-    # TODO: root가 None이면 빈 리스트 반환
-    pass
-    
-    # TODO: 왼쪽 서브트리 순회
-    pass
-    
-    # TODO: 오른쪽 서브트리 순회
-    pass
-    
-    # TODO: 루트 값 추가
-    pass
-    
-    return result
+    if root == None:
+        return 
+    else:
+        postorder(root.left)
+        postorder(root.right)
+        result3.append(root.value)
+        
+        
+        
+    return result3
 
 # 테스트 케이스
 if __name__ == "__main__":
