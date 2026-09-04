@@ -53,19 +53,18 @@ def preorder(root):  #트리가 왼쪽만 있거나 오른쪽만 있을때도 �
     return result
         
 
-result2 = []
+
 def inorder(root):
     """중위 순회: 왼쪽 → 루트 → 오른쪽""" 
-    
+    result2 = []    
     #루트를 내려 그리고 탐색
     
     if root == None:
-        return 
+        return []
     else:
-        inorder(root.left)
+        result2.extend(inorder(root.left))
         result2.append(root.value)
-        inorder(root.right)
-        
+        result2.extend(inorder(root.right))
         
         
     return result2
