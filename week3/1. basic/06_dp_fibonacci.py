@@ -15,11 +15,6 @@
 입력: n = 10
 출력: 55
 
-힌트:
-- 딕셔너리에 계산 결과 저장
-- 이미 계산했으면 저장된 값 반환
-- 계산 안 했으면 재귀 호출 후 저장
-
 설명:
 - 시간 복잡도: O(n) - 각 값을 한 번만 계산
 - 공간 복잡도: O(n) - memo 딕셔너리와 재귀 스택
@@ -81,18 +76,18 @@ def fibonacci_memo(n, memo=None):
     Returns:
         n번째 피보나치 수
     """
-    # TODO: memo가 None이면 빈 딕셔너리로 초기화
-    pass
+    if memo == None:
+        memo = {}
     
-    # TODO: base case 
-    pass
-    
-    # TODO: 이미 계산한 값이 memo에 있으면 반환
-    pass
-    
-    # TODO: 재귀 호출하여 계산하고 memo에 저장
-    pass
-    
+    if n == 1:
+        memo[1] = 1
+    if n==0:
+        memo[0] =0
+
+    if n is not memo:
+        memo[n] = fibonacci_memo(n-1, memo) + fibonacci_memo(n-2, memo)
+            
+            
     return memo[n]
 
 # 테스트 케이스
