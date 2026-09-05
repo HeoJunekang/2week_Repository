@@ -82,9 +82,9 @@ def fibonacci_memo(n, memo=None):
     if n == 1:
         memo[1] = 1
     if n==0:
-        memo[0] =0
+        memo[0] = 0
 
-    if n is not memo:
+    if n not in memo:
         memo[n] = fibonacci_memo(n-1, memo) + fibonacci_memo(n-2, memo)
             
             
